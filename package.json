@@ -1,0 +1,16 @@
+{
+  "name": "TempSensorNode",
+  "version": "0.1.0",
+  "description": "Forwards data to a cloud service.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Vince Allen",
+  "license": "ISC",
+  "dependencies": {
+    "keen.io": "~0.1.2",
+    "routes-router": "~4.0.1",
+    "http": "0.0.0",
+    "st": "~0.5.1",
+    "url": "~0.10.1"
+  }
+}
