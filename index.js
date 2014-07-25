@@ -6,6 +6,7 @@ var url = require('url');
 var Keen = require("keen.io");
 
 var app = Router();
+var PORT = 8000;
 
 app.addRoute("/", function (req, res) {
 
@@ -38,5 +39,6 @@ app.addRoute("/", function (req, res) {
 
 });
 var server = http.createServer(app);
-server.listen(8000);
+server.listen(PORT);
+console.log('Listening on port ' + PORT);
 
