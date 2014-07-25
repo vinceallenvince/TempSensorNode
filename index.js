@@ -20,14 +20,20 @@ app.addRoute("/", function (req, res) {
       writeKey: writeKey
   });
 
-  // send single event to Keen IO
-  client.addEvent("temperature", {"temperature": temperature}, function(err, res) {
-      if (err) {
-          console.log("Oh no, an error!");
-      } else {
-          console.log("Hooray, it worked!");
-      }
-  });
+  if (projectId && writeKey && temperature) {
+
+    // send single event to Keen IO
+    client.addEvent("temperature", {"temperature": temperature}, function(err, res) {
+        if (err) {
+            console.log("Oh no, an error!");
+        } else {
+            console.log("Hooray, it worked! Saved temp: " + temperature);
+        }
+    });
+
+  } else {
+    console.log("query parameter missing!");
+  }
 
 
 });
