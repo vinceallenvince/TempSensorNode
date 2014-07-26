@@ -9,7 +9,8 @@ var app = Router();
 var PORT = 8000;
 
 app.addRoute("/", function (req, res) {
-
+  console.log(req);
+  console.log(res);
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
   var projectId = query.projectId;
