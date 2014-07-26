@@ -16,6 +16,11 @@ app.addRoute("/", function (req, res) {
   var writeKey = query.writeKey;
   var temperature = query.temperature;
 
+  if (!projectId || !writeKey) {
+    console.log("projectId and writeKey are required.");
+    return;
+  }
+
   var client = Keen.configure({
       projectId: projectId,
       writeKey: writeKey
