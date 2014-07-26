@@ -8,15 +8,6 @@ var Keen = require("keen.io");
 var app = Router();
 var PORT = 8000;
 
-// Serve all the static assets prefixed at /static
-// so GET /static/js/app.js will work.
-app.addRoute("/static/*", st({
-    path: __dirname + "/static",
-    url: "/static"
-}));
-
-app.addRoute("*", st(__dirname + "/static"));
-
 app.addRoute("/", function (req, res) {
 
   var url_parts = url.parse(req.url, true);
