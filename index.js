@@ -15,6 +15,7 @@ app.addRoute("/", function (req, res) {
   var projectId = query.projectId;
   var writeKey = query.writeKey;
   var temperature = query.temperature;
+  var msg = "";
 
   if (!projectId || !writeKey) {
     console.log("projectId and writeKey are required.");
@@ -26,26 +27,27 @@ app.addRoute("/", function (req, res) {
       writeKey: writeKey
   });
 
+  // res.writeHead(200, { "Content-Type": "text/html" });
+
   if (projectId && writeKey && temperature) {
 
     // send single event to Keen IO
     client.addEvent("temperature", {"temperature": temperature}, function(err, result) {
         if (err) {
-            console.log("Oh no, an error!");
-            res.writeHead(200, { "Content-Type": "text/html" });
-            res.end("Oh no, an error!");
+            msg = "Oh no, an error!";
+            console.log(msg);
+            res.end(msg);
         } else {
-            console.log("Hooray, it worked! Saved temp: " + temperature);
-            res.writeHead(200, { "Content-Type": "text/html" });
-            res.end("Hooray, it worked! Saved temp: " + temperature);
+            msg = "Hooray, it worked! Saved temp: " + temperature;
+            console.log(msg);
+            res.end(msg);
         }
     });
 
   } else {
-    console.log("query parameter missing!");
-
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end("query parameter missing!");
+    msg = "query parameter missing!";
+    console.log(msg);
+    res.end(msg);
   }
 
 
