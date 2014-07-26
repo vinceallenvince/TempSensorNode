@@ -32,13 +32,20 @@ app.addRoute("/", function (req, res) {
     client.addEvent("temperature", {"temperature": temperature}, function(err, res) {
         if (err) {
             console.log("Oh no, an error!");
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end("Oh no, an error!");
         } else {
             console.log("Hooray, it worked! Saved temp: " + temperature);
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end("Hooray, it worked! Saved temp: " + temperature);
         }
     });
 
   } else {
     console.log("query parameter missing!");
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end("query parameter missing!");
   }
 
 
