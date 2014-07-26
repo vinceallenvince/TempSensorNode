@@ -18,7 +18,9 @@ app.addRoute("/", function (req, res) {
   var msg = "";
 
   if (!projectId || !writeKey) {
-    console.log("projectId and writeKey are required.");
+    msg = "projectId and writeKey are required.";
+    console.log(msg);
+    res.end(msg);
     return;
   }
 
